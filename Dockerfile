@@ -1,5 +1,5 @@
 # Build of the Socks5Balancer
-FROM alpine:latest AS build-proxy
+FROM alpine:3 AS build-proxy
 
 RUN apk update && apk upgrade && apk add boost-dev boost-static linux-headers cmake make openssl-dev gcc g++
 
@@ -26,7 +26,7 @@ RUN yarn
 RUN yarn build
 
 # Runtime image
-FROM alpine:latest AS runtime
+FROM alpine:3 AS runtime
 
 RUN apk update && apk upgrade && apk add boost-dev boost-static
 
