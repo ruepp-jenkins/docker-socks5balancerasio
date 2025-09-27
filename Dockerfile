@@ -1,5 +1,5 @@
 # Build of the Socks5Balancer
-FROM alpine:3 AS build-proxy
+FROM alpine:latest AS build-proxy
 
 RUN apk update && apk upgrade && apk add boost-dev boost-static linux-headers cmake make openssl-dev gcc g++
 
@@ -19,14 +19,14 @@ RUN apt update && apt install git
 
 WORKDIR /html
 
-COPY repo_html /html
+RUN git clone https://github.com/Socks5Balancer/html.git .
 
 RUN corepack enable && corepack prepare yarn@3.4.1 --activate
 RUN yarn
 RUN yarn build
 
 # Runtime image
-FROM alpine:3 AS runtime
+FROM alpine:latest AS runtime
 
 RUN apk update && apk upgrade && apk add boost-dev boost-static
 
