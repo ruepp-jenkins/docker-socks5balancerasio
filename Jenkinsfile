@@ -2,7 +2,7 @@ properties(
     [
         githubProjectProperty(
             displayName: 'docker-socks5balancerasio',
-            projectUrlStr: 'https://github.com/ruepp-jenkins/docker-socks5balancerasio'
+            projectUrlStr: 'https://github.com/ruepp-jenkins/docker-socks5balancerasio/'
         ),
         disableConcurrentBuilds(abortPrevious: true)
     ]
@@ -27,6 +27,16 @@ pipeline {
             entries: [
                 URLTriggerEntry(
                     url: 'https://hub.docker.com/v2/namespaces/library/repositories/alpine/tags/3.18',
+                    contentTypes: [
+                        JsonContent(
+                            [
+                                JsonContentEntry(jsonPath: '$.last_updated')
+                            ]
+                        )
+                    ]
+                ),
+                URLTriggerEntry(
+                    url: 'https://hub.docker.com/v2/namespaces/library/repositories/node/tags/18',
                     contentTypes: [
                         JsonContent(
                             [
