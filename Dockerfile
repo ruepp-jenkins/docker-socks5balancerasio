@@ -19,6 +19,8 @@ RUN apt update && apt install git
 
 WORKDIR /html
 
+COPY repo/html /html
+
 RUN corepack enable && corepack prepare yarn@3.4.1 --activate
 RUN yarn
 RUN yarn build
