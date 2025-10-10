@@ -66,6 +66,11 @@ pipeline {
                 url: env.GIT_URL
             }
         }
+        stage('Binfmt registration') {
+            steps {
+                sh 'docker run --privileged --rm tonistiigi/binfmt --install all'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'chmod +x scripts/*.sh'
