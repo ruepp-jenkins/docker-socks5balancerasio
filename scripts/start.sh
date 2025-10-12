@@ -24,6 +24,3 @@ else
         --pull \
         --push ./repo/
 fi
-
-# cleanup
-scripts/docker_cleanup.sh
