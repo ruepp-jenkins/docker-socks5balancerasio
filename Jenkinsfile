@@ -34,7 +34,7 @@ pipeline {
                     ]
                 ),
                 URLTriggerEntry(
-                    url: 'https://hub.docker.com/v2/namespaces/library/repositories/node/tags/lts',
+                    url: 'https://hub.docker.com/v2/namespaces/library/repositories/node/tags/24',
                     contentTypes: [
                         JsonContent(
                             [
