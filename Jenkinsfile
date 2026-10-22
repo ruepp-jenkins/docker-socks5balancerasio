@@ -13,6 +13,11 @@ pipeline {
         label 'oracle_docker'
     }
 
+    options {
+        // initial run + 2 retries; each retry starts with Pre Cleanup, so ./repo is fresh
+        retry(3)
+    }
+
     environment {
         IMAGE_FULLNAME = 'ruepp/socks5balancerasio'
         DOCKER_API_PASSWORD = credentials('DOCKER_API_PASSWORD')
